@@ -18,3 +18,6 @@ ufw allow 443
 
 sshd config must allow: GatewayPorts clientspecified
 
+# ssh key gen
+ssh-keygen -t rsa -b 4096 -C "autossh" -f ./sshkey/autossh_id_rsa
+
