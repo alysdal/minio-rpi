@@ -16,6 +16,7 @@ services:
       MINIO_SERVER_URL: ${MINIO_SERVER_URL}
     #command: server --console-address ":9001" /data
     command: server -S /certs --console-address ":9001" /data
+    restart: always
     # to generate certs: openssl req -new -x509 -nodes -days 730 -keyout ./certs/private.key -out ./certs/public.crt -config openssl.conf
 
   sshtunnel:
