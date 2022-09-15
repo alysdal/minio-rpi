@@ -10,11 +10,9 @@ services:
       - ./data:/data
       - ./certs:/certs
     environment:
-      MINIO_ROOT_USER: masoud
-      MINIO_ROOT_PASSWORD: Strong#Pass#2022
-      MINIO_SERVER_URL: "https://127.0.0.1:9000"
-    command: server -S /certs --console-address ":9001" /data 
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+      MINIO_SERVER_URL: ${MINIO_SERVER_URL}
+    command: server --console-address ":9001" /data
+    #command: server -S /certs --console-address ":9001" /data
     # to generate certs: openssl req -new -x509 -nodes -days 730 -keyout ./certs/private.key -out ./certs/public.crt -config openssl.conf
-
-volumes:
-  minio_storage: {}
