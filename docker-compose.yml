@@ -5,7 +5,7 @@ services:
     image: tobi312/minio:latest
     #image: minio/minio
     ports:
-      - "8001:9000"
+      - "8000:9000"
       - "9001:9001"
     volumes:
       - ${DATA_DIR}:/data
@@ -27,12 +27,15 @@ services:
       - SSH_BIND_IP=\*
       - SSH_TUNNEL_PORT=443
       #- SSH_TARGET_PORT=9001
-      - SSH_TARGET_PORT=8001
-      - SSH_TARGET_HOST=host.docker.internal
+      - SSH_TARGET_PORT=8000
+      - SSH_TARGET_HOST=172.17.0.1
+      #- SSH_TARGET_HOST=host.docker.internal
       - SSH_MODE=-N -R
     restart: always
     volumes:
       - ./sshkey/autossh_id_rsa:/id_rsa
+    #extra_hosts:
+    #  - host.docker.internal:127.0.0.1
     #links:
     #  - "sshtunnel:minio"
     #ports:
