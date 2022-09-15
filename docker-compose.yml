@@ -2,7 +2,8 @@ version: '3'
 
 services:
   minio:
-    image: minio/minio
+    image: tobi312/minio:latest
+    #image: minio/minio
     ports:
       - "8001:9000"
       - "9001:9001"
